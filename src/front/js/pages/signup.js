@@ -21,7 +21,7 @@ export const Signup = () => {
             console.log("User is signed up!")
            
         } catch (error) {
-            console.error('Signup error:', error.response.data);
+            console.error('Signup error:', error.response);
             // Handle errors (e.g., show error message)
         }
     };

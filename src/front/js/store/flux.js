@@ -57,7 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return;
 					}
 
-					const resp = await fetch(process.env.BACKEND_URL + "/api/signup", {
+					const resp = await fetch("https://bug-free-garbanzo-6997vjxrp4g6hxvxq-3001.app.github.dev/api/create_user", {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"
@@ -65,6 +65,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						body: JSON.stringify({ email:email, password:password})
 					});
 					const data = await resp.json();
+					console.log("User is signed up!", data);
 					setStore({ token: data.token, user: data.user });
 					return data;
 				} catch (error) {
