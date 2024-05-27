@@ -17,8 +17,8 @@ export const Signup = () => {
                 return;
             }
 
-            action.signup(email,password,confirmPassword)
-            console.log("User is signed up!")
+            actions.signup(email,password,confirmPassword)
+            // console.log("User is signed up!")
            
         } catch (error) {
             console.error('Signup error:', error.response);

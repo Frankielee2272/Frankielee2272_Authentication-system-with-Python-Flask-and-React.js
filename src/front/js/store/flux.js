@@ -69,10 +69,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ token: data.token, user: data.user });
 					return data;
 				} catch (error) {
-					console.error('Signup error:', error.response.data);
+					console.error('Signup error:', error);
 					// Handle errors (e.g., show error message)
 				}
 			},
+			login: async (email, password) => {
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + "/api/create_token",{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({ email:email, password:password})
+					});
+					const data = await resp.json();
+					console.log("User is logged in!", data);
+					sessionStorage.setItem("token", data.token);
+					sessionStorage.setItem("user", JSON.stringify(data.user.email));
+					setStore({ token: data.token, user: data.user });
+					return data;
+				} catch (error) {
+					console.error('Login error:', error);
+					// Handle errors (e.g., show error message)
+				}
+			},
+			logout: () => {
+				sessionStorage.removeItem("token");
+				sessionStorage.removeItem("user");
+				setStore({ token: null, user: null });
+			}
 		}
 	};
 };

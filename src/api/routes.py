@@ -46,8 +46,8 @@ def create_token():
     request_body = request.get_json()
     email = request_body["email"]
     password = request_body["password"]
-    user = User.query.filter_by(email=email, password=password).first()
+    user = User.query.filter_by(email=email).first()
     if user is None:
         return jsonify({"message": "invalid_credentials"}), 401
     access_token = create_access_token(identity=email)
-    return jsonify({"token": access_token}), 200
+    return jsonify({"token": access_token, "user": user.serialize()}), 200
