@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Context } from '../store/appContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Login = () => {
     const { store, actions } = useContext(Context);
@@ -27,7 +27,7 @@ export const Login = () => {
 
 
     return (
-        <Form>
+        <Form className="form">
           Login
             <Form.Group className="mb-3">
                 <Form.Label>Email address</Form.Label>
@@ -45,6 +45,7 @@ export const Login = () => {
                 <Button variant="primary" type="submit" onClick={(e) => handleSubmit(e)}>
                     Submit
                 </Button>
+                <Link to="/signup">No account? Signup</Link>
         </Form>
     );
 }

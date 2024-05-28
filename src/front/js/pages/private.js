@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 export const Private = () =>  {
   const { store, actions} = useContext(Context)
-  const token = store.token
-  const user = store.user
+  const token = sessionStorage.getItem('token')
+  const user = sessionStorage.getItem('user')
   const navigate = useNavigate()
   const logout = () => {
 

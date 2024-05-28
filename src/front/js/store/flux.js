@@ -75,7 +75,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: async (email, password) => {
 				try {
-					const resp = await fetch(process.env.BACKEND_URL + "/api/create_token",{
+					const resp = await fetch("https://bug-free-garbanzo-6997vjxrp4g6hxvxq-3001.app.github.dev/api/create_token",{
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"
